@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "132770720175",
+    "firebase_url": "https://temanbusreloaded.firebaseio.com",
+    "project_id": "temanbusreloaded",
+    "storage_bucket": "temanbusreloaded.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:132770720175:android:b8a489640014f86e43a75a",
+        "android_client_info": {
+          "package_name": "io.muhwyndham.temanbusreloaded"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "132770720175-1hlkodetht16vpqvi5d04i6vm145gvon.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "io.muhwyndham.temanbusreloaded",
+            "certificate_hash": "e5c948627c909daed60d07f60b6475e0c6296870"
+          }
+        },
+        {
+          "client_id": "132770720175-apvr98be3fkgir61nsbsqb8q3eqo5m1l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCfzTYEdpyQlFvB3wAQ7T53bGDDLvbrm60"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "132770720175-apvr98be3fkgir61nsbsqb8q3eqo5m1l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

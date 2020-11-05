@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Teman Bus Reloaded</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="nama">Nama</string>
+    <string name="nomor_handphone">Nomor handphone</string>
+    <string-array name="country_code">
+        <item>+62</item>
+        <item>+60</item>
+        <item>+1</item>
+        <item>+68</item>
+    </string-array>
+</resources>

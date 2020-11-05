@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".auth.register.RegisterActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/iv_back"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_margin="20dp"
+                android:src="@drawable/ef_ic_arrow_back"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/black" />
+
+            <TextView
+                style="@style/TextLequireStyleTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Registrasi"
+                app:layout_constraintBottom_toBottomOf="@id/iv_back"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/iv_back" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="20dp" />
+
+        <include
+            android:id="@+id/profile_layout"
+            layout="@layout/layout_profile_pict" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_name"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            app:errorEnabled="true">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="Name"
+                android:hint="@string/nama"
+                android:inputType="textPersonName"
+                android:lines="1"
+                android:padding="10dp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_email"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            app:errorEnabled="true">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="Email"
+                android:hint="@string/email"
+                android:inputType="textPersonName"
+                android:lines="1"
+                android:padding="10dp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:id="@+id/rl_spinner"
+                android:layout_width="70dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginEnd="15dp"
+                android:layout_weight="4"
+                android:background="@drawable/spinner_background"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toStartOf="@id/til_phone"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <Spinner
+                    android:id="@+id/spinner2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="5dp"
+                    android:background="@android:color/transparent"
+                    android:entries="@array/country_code"
+                    android:gravity="center"
+                    android:spinnerMode="dropdown" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_baseline_keyboard_arrow_down_24" />
+
+            </RelativeLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_phone"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:errorEnabled="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/rl_spinner"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:importantForAutofill="no"
+                    android:hint="@string/nomor_handphone"
+                    android:inputType="phone|number"
+                    android:lines="1"
+                    android:padding="10dp" />
+            </com.google.android.material.textfield.TextInputLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_password"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            app:errorEnabled="true">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="Password"
+                android:hint="@string/password"
+                android:inputType="textPassword"
+                android:lines="1"
+                android:padding="10dp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_password_confirm"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            app:errorEnabled="true">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_password_confirm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="Password"
+                android:hint="Konfirmasi ulang password"
+                android:inputType="textPassword"
+                android:lines="1"
+                android:padding="10dp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/btn_register"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="20dp"
+            android:enabled="false"
+            android:text="Daftar" />
+    </LinearLayout>
+</ScrollView>
