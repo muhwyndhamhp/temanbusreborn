@@ -1,4 +1,4 @@
-package io.muhwyndham.temanbusreloaded.auth
+package io.muhwyndham.temanbusreloaded.ui.auth
 
 import android.net.Uri
 import androidx.hilt.lifecycle.ViewModelInject
@@ -9,16 +9,16 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.UserProfileChangeRequest
 import com.google.firebase.auth.ktx.userProfileChangeRequest
 import com.google.firebase.storage.FirebaseStorage
-import com.google.firebase.storage.UploadTask
-import io.muhwyndham.temanbusreloaded.auth.ErrorConstants.ERROR
-import io.muhwyndham.temanbusreloaded.auth.ErrorConstants.LOADING
-import io.muhwyndham.temanbusreloaded.auth.ErrorConstants.LOGIN_FAILED
-import io.muhwyndham.temanbusreloaded.auth.ErrorConstants.LOGIN_SUCCESS
-import io.muhwyndham.temanbusreloaded.auth.ErrorConstants.NOTHING
-import io.muhwyndham.temanbusreloaded.auth.ErrorConstants.REGISTER_FAILED
-import io.muhwyndham.temanbusreloaded.auth.ErrorConstants.REGISTER_SUCCESS
-import io.muhwyndham.temanbusreloaded.auth.ErrorConstants.UPDATE_DATA_FAILED
-import io.muhwyndham.temanbusreloaded.auth.ErrorConstants.UPLOAD_PROFILE_FAILED
+import io.muhwyndham.temanbusreloaded.models.data.RegisterRequest
+import io.muhwyndham.temanbusreloaded.models.ui.State
+import io.muhwyndham.temanbusreloaded.utils.Constants.ERROR
+import io.muhwyndham.temanbusreloaded.utils.Constants.LOADING
+import io.muhwyndham.temanbusreloaded.utils.Constants.LOGIN_FAILED
+import io.muhwyndham.temanbusreloaded.utils.Constants.LOGIN_SUCCESS
+import io.muhwyndham.temanbusreloaded.utils.Constants.REGISTER_FAILED
+import io.muhwyndham.temanbusreloaded.utils.Constants.REGISTER_SUCCESS
+import io.muhwyndham.temanbusreloaded.utils.Constants.UPDATE_DATA_FAILED
+import io.muhwyndham.temanbusreloaded.utils.Constants.UPLOAD_PROFILE_FAILED
 import java.io.File
 
 class AuthViewModel @ViewModelInject constructor(
@@ -30,10 +30,12 @@ class AuthViewModel @ViewModelInject constructor(
     val appState = MutableLiveData(State())
 
     fun authWithEmail(email: String, password: String) {
-        appState.postValue(State(
-            LOADING,
-            "Mohon tunggu proses masuk..."
-        ))
+        appState.postValue(
+            State(
+                LOADING,
+                "Mohon tunggu proses masuk..."
+            )
+        )
         auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
@@ -57,8 +59,7 @@ class AuthViewModel @ViewModelInject constructor(
     }
 
     fun registerWithEmail(registerRequest: RegisterRequest) {
-        if(registerRequest.displayProfileImage != null)
-        {
+        if (registerRequest.displayProfileImage != null) {
             appState.postValue(
                 State(
                     LOADING,
@@ -70,7 +71,7 @@ class AuthViewModel @ViewModelInject constructor(
                 registerRequest.email
             ) { uploadTask, url ->
                 when (uploadTask) {
-                    is UploadTask.TaskSnapshot -> {
+                    is Uri -> {
                         doRegisterAction(registerRequest, url)
                     }
                     is Exception -> {
@@ -84,8 +85,7 @@ class AuthViewModel @ViewModelInject constructor(
                     }
                 }
             }
-        }
-        else
+        } else
             doRegisterAction(registerRequest, null)
     }
 
@@ -161,8 +161,7 @@ class AuthViewModel @ViewModelInject constructor(
     private fun doRegisterAction(
         registerRequest: RegisterRequest,
         url: Uri?
-    )
-    {
+    ) {
         appState.postValue(
             State(
                 LOADING,
@@ -174,7 +173,8 @@ class AuthViewModel @ViewModelInject constructor(
                 if (task.isSuccessful) {
                     updateProfileData(
                         userProfileChangeRequest {
-                            displayName = registerRequest.displayName + "-" + registerRequest.phoneNumber
+                            displayName =
+                                registerRequest.displayName + "-" + registerRequest.phoneNumber
                             photoUri = url
                         }
                     )
@@ -192,29 +192,7 @@ class AuthViewModel @ViewModelInject constructor(
     }
 }
 
-object ErrorConstants {
-    const val LOADING = "loading"
-    const val LOGIN_FAILED = "login_failed"
-    const val LOGIN_SUCCESS = "login_success"
-    const val REGISTER_FAILED = "register_failed"
-    const val REGISTER_SUCCESS = "register_success"
-    const val UPDATE_DATA_FAILED = "update_data_failed"
-    const val UPLOAD_PROFILE_FAILED = "upload_profile_failed"
-    const val GENERAL_ERROR = "general_error"
-    const val ERROR = "Error"
-    const val NOTHING = "None"
-}
 
-data class RegisterRequest(
-    val displayName: String,
-    val displayProfileImage: Image?,
-    val email: String,
-    val password: String,
-    val phoneNumber: String
-)
 
-data class State(
-    val stateCode: String? = NOTHING,
-    val message: String? = "",
-    val loggerMessage: String? = NOTHING
-)
+
+

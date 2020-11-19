@@ -1,4 +1,4 @@
-package io.muhwyndham.temanbusreloaded.home
+package io.muhwyndham.temanbusreloaded.ui.home
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

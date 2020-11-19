@@ -1,17 +1,17 @@
-package io.muhwyndham.temanbusreloaded.auth.login
+package io.muhwyndham.temanbusreloaded.ui.auth.login
 
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
 import com.google.android.material.snackbar.Snackbar
-import io.muhwyndham.temanbusreloaded.auth.AuthViewModel
-import io.muhwyndham.temanbusreloaded.auth.ErrorConstants.LOADING
-import io.muhwyndham.temanbusreloaded.auth.ErrorConstants.NOTHING
-import io.muhwyndham.temanbusreloaded.auth.register.RegisterActivity
 import io.muhwyndham.temanbusreloaded.base.MainActivity
 import io.muhwyndham.temanbusreloaded.databinding.ActivityLoginBinding
-import io.muhwyndham.temanbusreloaded.home.HomeActivity
+import io.muhwyndham.temanbusreloaded.ui.auth.AuthViewModel
+import io.muhwyndham.temanbusreloaded.ui.auth.register.RegisterActivity
+import io.muhwyndham.temanbusreloaded.ui.home.HomeActivity
+import io.muhwyndham.temanbusreloaded.utils.Constants.LOADING
+import io.muhwyndham.temanbusreloaded.utils.Constants.NOTHING
 import io.muhwyndham.temanbusreloaded.utils.Extensions.assertEmail
 import io.muhwyndham.temanbusreloaded.utils.Extensions.assertPassword
 
@@ -45,6 +45,7 @@ class LoginActivity : MainActivity() {
                 binding.progressBar.visibility = View.GONE
                 toggleAllElement(true)
             }
+
             if (it.stateCode != NOTHING)
                 Snackbar.make(binding.root, it.message as CharSequence, Snackbar.LENGTH_SHORT)
                     .show()
